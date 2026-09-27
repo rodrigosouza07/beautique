@@ -28,5 +28,4 @@ public class BaseEntity {
     @CreationTimestamp 
     @Column 
     private LocalDateTime updateAt;
-
 }
