@@ -1,13 +1,21 @@
 package br.com.beautique.entities;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter 
 @Setter
@@ -16,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor 
 @Table (name="beauty_procedures")
 @Entity 
-public class BeautyProcedures extends BaseEntity{
+public class BeautyProceduresEntity extends BaseEntity{
 
     @Column(nullable = false, length=100)
     private String name;
@@ -26,4 +34,10 @@ public class BeautyProcedures extends BaseEntity{
 
     @Column (nullable=false)
     private String price;   
+
+    @JsonIgnore 
+    @OneToMany(mappedBy="beautyProcedures", cascade=CascadeType.ALL, orphanRemoval=true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private List<AppointmentsEntity> appointments;
 }

@@ -39,8 +39,8 @@ public class AppointmentsEntity extends BaseEntity{
     private CustomerEntity customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "beaut_procedure_id", nullable=false)
+    @JoinColumn(name = "beauty_procedure_id", nullable=false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private BeautyProcedures beatyProcedures;
+    private BeautyProceduresEntity beautyProcedure;
 }
